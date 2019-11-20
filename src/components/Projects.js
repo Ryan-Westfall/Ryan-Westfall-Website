@@ -36,6 +36,9 @@ class Projects extends React.Component {
                       </div>
               </Link>
                 {this.state.repos.map(function(repo) {
+                  if(repo.name === "Ryan-Westfall.github.io") {
+                    return;
+                  }
                     return (
                         <a href={repo.html_url} className="repo">
                         <div className="repoBox">
