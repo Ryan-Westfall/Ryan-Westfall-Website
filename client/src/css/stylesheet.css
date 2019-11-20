@@ -1,0 +1,139 @@
+body {
+  margin: 0;
+}
+
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 180;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content button {
+  min-width: 180px;
+  background-color: #ddd;
+  cursor: pointer;
+  color: black;
+  text-decoration: none;
+  display: block;
+  border: none;
+  font-size: 15px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  left:100px;
+}
+
+#saveButton {
+  pointer-events: none;
+  opacity: .3;
+}
+
+#navButton:hover, #navButton:focus{
+  background-color: rgb(169, 175, 180)
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+
+/*#3498DB*/
+
+.viewButton {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.viewButton:hover{
+  background-color: #2980B9;
+}
+
+.viewHighlighted{
+  background-color: #2980B9;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+
+}
+
+.navBar{
+  width: 100%;
+  background-color: #3498DB;
+  border-bottom: 1px solid rgb(172, 172, 172)
+}
+
+.nav{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  float: left;
+}
+
+.grayout{
+    opacity:0.5;
+}
+
+.loadPopup {
+  z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -200px;
+  margin-left: -250px;
+  background-color: (255,255,255);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px;
+  border-width: 1px;
+  border-color: rgb(172, 172, 172);
+  border-style: solid;
+  width: auto;
+  height: auto;
+  display: none;
+  background: white;
+}
+
+.loadDataPopup {
+  padding: 10px;
+  height:auto;
+  width:auto;
+}
+
+#x {
+  position: absolute;
+  right: 0%;
+  background-color: #3498DB;
+  color: white;
+  padding: 8px;
+  font-size: 18px;
+  margin:5px;
+  border: none;
+  cursor: pointer;
+}
+
+

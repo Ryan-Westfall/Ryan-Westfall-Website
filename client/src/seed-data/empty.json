@@ -1,0 +1,21 @@
+{
+  "fileName": "",
+  "sentences": [{
+      "sentence": "",
+      "style": [{
+        "type": "",
+        "anchorOffset": 0,
+        "focusOffset": 0
+      }],
+      "depth": 0,
+      "terms": [{
+        "term": "",
+        "images": [],
+        "symbol": []
+      }]
+    }
+  ],
+  "citations": [{
+    "citation": ""
+    }]
+}
