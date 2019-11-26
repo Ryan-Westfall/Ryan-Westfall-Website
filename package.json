@@ -24,6 +24,7 @@
     "gatsby-transformer-sharp": "^2.2.21",
     "immutable": "^4.0.0-rc.12",
     "react": "^16.10.2",
+    "react-burger-menu": "^2.6.12",
     "react-dom": "^16.10.2",
     "react-helmet": "^5.2.1",
     "react-pdf": "^4.1.0",
