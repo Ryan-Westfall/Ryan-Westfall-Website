@@ -1,8 +1,9 @@
 Body {
   font-family: 'Courier New', Courier, monospace;
   font-size: 23px;
-  /* overflow-x: hidden; */
 }
+
+/* Navigation */
 
 @media only screen and (max-width: 740px) {
   .nav-mobile {
@@ -14,12 +15,12 @@ Body {
   }
 }
 
-#mobile-title {
-  border-bottom: 1.5px solid gray;
-}
-
 .nav-mobile {
   display: none;
+}
+
+#mobile-title {
+  border-bottom: 1.5px solid gray;
 }
 
 .nav-mobile ul {
@@ -27,6 +28,10 @@ Body {
   margin-bottom: 10px;
 }
 
+.navigation a {
+  text-decoration: none;
+  color:white;
+}
 
 .nav-desktop {
   padding-left: 7%;
@@ -49,6 +54,10 @@ Body {
   padding-left: 0;
   margin-left: 0;
   padding-top: 10px;
+}
+
+.nav-desktop li {
+  padding-left: 30px;
 }
 
 .nav-title,.nav-social,.nav-links {
@@ -86,20 +95,7 @@ Body {
   background: gray;
 } 
 
-a {
-  text-decoration: none;
-  color:white;
-}
-
-
-li {
-  margin-left: 20px;
-}
-
-.rightNav {
-  float: right;
-}
-
+/*====================================*/
 
 
 
@@ -124,8 +120,8 @@ div.projects{
   gap: 1.2rem 1.2rem;
 }
 
-@media only screen and (max-width: 600px) {
-  div.projects{
+@media only screen and (max-width: 740px) {
+  div .projects{
     display: grid;
     -webkit-box-align: center;
     align-items: center;
@@ -133,6 +129,14 @@ div.projects{
     grid-template-rows: 8fr;
     gap: 1.2rem 1.2rem;
   }
+
+  #projects-title {
+    margin-top: 20% !important;
+  }
+}
+
+#projects-title {
+  margin-top: 5%;
 }
 
 .repo{
@@ -148,6 +152,12 @@ div.repoBox{
     height: 100%;
     padding: 1rem;
     background: rgb(255, 255, 255);
+}
+
+.repo:hover, .repoBox:hover {
+  transition-duration: 1s;
+  background: rgb(230, 230, 230);
+  box-shadow: rgba(0, 0, 0, 0.8) 0px 3px 6px 0px;
 }
 
 .Inner_Wrapper {

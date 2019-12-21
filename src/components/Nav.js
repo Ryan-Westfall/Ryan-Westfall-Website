@@ -15,7 +15,7 @@ class Nav extends React.Component {
     }
     render() {
         return (
-<div>
+<div className="navigation">
     <div className="nav-mobile">
     <Menu width={"230px"}>
         <div id="mobile-title" className="nav-title">
@@ -25,10 +25,10 @@ class Nav extends React.Component {
         <div className="nav-social">
             <ul>
                 <li id="nav-linkedin">
-                <img title="Connect with me on Linkedin!" className="navImg" href="https://www.linkedin.com/in/ryan-westfall-15a588167/" src={Linkedin}></img>
+                <a href="https://www.linkedin.com/in/ryan-westfall-15a588167/"><img title="Connect with me on Linkedin!" className="navImg" href="https://www.linkedin.com/in/ryan-westfall-15a588167/" src={Linkedin}></img></a>
                 </li>
                 <li>
-                <img title="Browse my Github!" className="navImg" href="https://www.linkedin.com/in/ryan-westfall-15a588167/" src={Github}></img>
+                <a href="https://github.com/Ryan-Westfall/"><img title="Browse my Github!" className="navImg" src={Github}></img></a>
                 </li>
             </ul>
         </div>
@@ -59,10 +59,10 @@ class Nav extends React.Component {
         <div className="nav-social">
             <ul>
                 <li>
-                <img title="Connect with me on Linkedin!" className="navImg" href="https://www.linkedin.com/in/ryan-westfall-15a588167/" src={Linkedin}></img>
+                <a href="https://www.linkedin.com/in/ryan-westfall-15a588167/"><img title="Connect with me on Linkedin!" className="navImg" src={Linkedin}></img></a>
                 </li>
                 <li>
-                <img title="Browse my Github!" className="navImg" href="https://www.linkedin.com/in/ryan-westfall-15a588167/" src={Github}></img>
+                <a href="https://github.com/Ryan-Westfall/"><img title="Browse my Github!" className="navImg" src={Github}></img></a>
                 </li>
             </ul>
         </div>

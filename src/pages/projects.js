@@ -6,7 +6,7 @@ export default () =>  (
 <div>
     <Nav/>
     <div className="Wrapper">
-        <h1>Projects:</h1>
+        <h1 id="projects-title">Projects:</h1>
         <Projects/>
     </div>
 </div>
