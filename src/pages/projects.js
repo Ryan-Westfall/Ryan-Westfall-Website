@@ -4,7 +4,7 @@ import Nav from "../components/Nav.js";
 
 export default () =>  (
 <div>
-    <Nav/>
+    <Nav tab="projects" />
     <div className="Wrapper">
         <h1 id="projects-title">Projects:</h1>
         <Projects/>

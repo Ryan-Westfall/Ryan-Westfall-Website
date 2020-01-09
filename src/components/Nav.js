@@ -5,21 +5,40 @@ import { slide as Menu } from 'react-burger-menu'
 
 import Linkedin from "../images/LinkedinNav.png";
 import Github from "../images/GithubNav.png";
+import Resume from "../images/resume-logo.png";
+import test from "../images/ryan-resume-01-08-20.pdf"
 
 
 
 class Nav extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {  };
+        this.state = {
+            aboutColor: "none"
+            
+        }
+        if(this.props.tab == "projects") {
+            this.state = {
+                projectColor: "gray"
+            }
+        }
+
+        else if(this.props.tab == "about") {
+            this.state = {
+                aboutColor: "gray"
+            }
+        }
     }
+
+
+
     render() {
         return (
 <div className="navigation">
     <div className="nav-mobile">
     <Menu width={"230px"}>
         <div id="mobile-title" className="nav-title">
-            <a><Link to="/">Ryan Westfall</Link></a>
+            <Link to="/">Ryan Westfall</Link>
         </div>
 
         <div className="nav-social">
@@ -35,8 +54,8 @@ class Nav extends React.Component {
 
         <div className="nav-links">
             <ul>
-            <li><Link to="about"><a>about</a></Link></li>
-            <li><Link to="projects"><a>projects</a></Link></li>
+            <li><Link to="/about" activeStyle={{color: this.state.aboutColor}}>about</Link></li>
+            <li><Link to="/projects" activeStyle={{color: this.state.projectColor}}>projects</Link></li>
             </ul>
         </div>
 
@@ -46,13 +65,13 @@ class Nav extends React.Component {
 
     <div className="nav-desktop"  >
         <div className="nav-title">
-            <a><Link to="/">Ryan Westfall</Link></a>
+            <Link to="/">Ryan Westfall</Link>
         </div>
 
         <div className="nav-links">
             <ul>
-            <li><Link to="about"><a>about</a></Link></li>
-            <li><Link to="projects"><a>projects</a></Link></li>
+            <li><Link to="/about" activeStyle={{color: this.state.aboutColor}}>about</Link></li>
+            <li><Link to="/projects" activeStyle={{color: this.state.projectColor}}>projects</Link></li>
             </ul>
         </div>
 
@@ -63,6 +82,9 @@ class Nav extends React.Component {
                 </li>
                 <li>
                 <a href="https://github.com/Ryan-Westfall/"><img title="Browse my Github!" className="navImg" src={Github}></img></a>
+                </li>
+                <li>
+                <a href={test} download><img title="View my Resume!" className="navImg" src={Resume}></img></a>
                 </li>
             </ul>
         </div>

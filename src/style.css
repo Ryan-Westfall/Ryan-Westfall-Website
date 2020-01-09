@@ -4,7 +4,7 @@ Body {
 }
 
 /* Navigation */
-
+/* 740 */
 @media only screen and (max-width: 740px) {
   .nav-mobile {
     display: block !important;
@@ -73,6 +73,7 @@ Body {
 
 .nav-links {
   margin-left: auto;
+  margin-right: 5%;
 }
 
 .nav-mobile .nav-title, .nav-mobile .nav-social {
@@ -88,6 +89,10 @@ Body {
 .nav-links a:hover, .nav-title a:hover, .nav-mobile a:hover {
   transition-duration: .8s;
   color: gray;
+}
+
+.nav-links .gray {
+  color: gray !important;
 }
 
 .nav-social img:hover {
@@ -285,7 +290,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
   background: #000000;
   padding: 0em 1.0em 0;
   font-size: 1.15em;
+  overflow: hidden !important;
 }
+
 
 /* Morph shape necessary with bubble or elastic */
 .bm-morph-shape {

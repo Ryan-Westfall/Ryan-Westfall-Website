@@ -25,7 +25,7 @@ class Projects extends React.Component {
     render() {
         return (
             <div className="projects">
-              <Link to="editor" className="repo">
+              <Link to="/editor" className="repo">
               <div className="repoBox">
                           <div>
                             <h4>Text Editor Application (Incomplete)</h4>
@@ -40,7 +40,7 @@ class Projects extends React.Component {
                     return;
                   }
                     return (
-                        <a href={repo.html_url} className="repo">
+                        <a key={repo.id} href={repo.html_url} className="repo">
                         <div className="repoBox">
                           <div>
                             <h4>{repo.name}</h4>
