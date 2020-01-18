@@ -35,56 +35,20 @@ class Nav extends React.Component {
     render() {
         return (
 <div className="navigation">
-    <div className="nav-mobile">
-    <Menu width={"230px"}>
-        <div id="mobile-title" className="nav-title">
-            <Link to="/">Ryan Westfall</Link>
-        </div>
-
-        <div className="nav-social">
-            <ul>
-                <li id="nav-linkedin">
-                <a href="https://www.linkedin.com/in/ryan-westfall-15a588167/"><img title="Connect with me on Linkedin!" className="navImg" href="https://www.linkedin.com/in/ryan-westfall-15a588167/" src={Linkedin}></img></a>
-                </li>
-                <li>
-                <a href="https://github.com/Ryan-Westfall/"><img title="Browse my Github!" className="navImg" src={Github}></img></a>
-                </li>
-            </ul>
-        </div>
-
-        <div className="nav-links">
-            <ul>
-            <li><Link to="/about" activeStyle={{color: this.state.aboutColor}}>about</Link></li>
-            <li><Link to="/projects" activeStyle={{color: this.state.projectColor}}>projects</Link></li>
-            </ul>
-        </div>
-
-        
-    </Menu>
-    </div>
-
     <div className="nav-desktop"  >
         <div className="nav-title">
             <Link to="/">Ryan Westfall</Link>
         </div>
-
-        <div className="nav-links">
-            <ul>
-            <li><Link to="/about" activeStyle={{color: this.state.aboutColor}}>about</Link></li>
-            <li><Link to="/projects" activeStyle={{color: this.state.projectColor}}>projects</Link></li>
-            </ul>
-        </div>
-
         <div className="nav-social">
             <ul>
                 <li>
-                <a href="https://www.linkedin.com/in/ryan-westfall-15a588167/"><img title="Connect with me on Linkedin!" className="navImg" src={Linkedin}></img></a>
+                <a href="https://www.linkedin.com/in/ryan-westfall-15a588167/"><img title="Connect with me on Linkedin!" src={Linkedin}></img></a>
                 </li>
                 <li>
-                <a href="https://github.com/Ryan-Westfall/"><img title="Browse my Github!" className="navImg" src={Github}></img></a>
+                <a href="https://github.com/Ryan-Westfall/"><img title="Browse my Github!" src={Github}></img></a>
                 </li>
                 <li>
-                <a href={test} download><img title="View my Resume!" className="navImg" src={Resume}></img></a>
+                <a href={test} download><img title="View my Resume!"  src={Resume}></img></a>
                 </li>
             </ul>
         </div>

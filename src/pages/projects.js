@@ -5,8 +5,8 @@ import Nav from "../components/Nav.js";
 export default () =>  (
 <div>
     <Nav tab="projects" />
-    <div className="Wrapper">
-        <h1 id="projects-title">Projects:</h1>
+    <div className="wrapper">
+        <h1>Projects:</h1>
         <Projects/>
     </div>
 </div>

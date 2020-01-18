@@ -13,15 +13,8 @@ class Projects extends React.Component {
         fetch('https://api.github.com/users/Ryan-Westfall/repos')
             .then(response => response.json())
             .then(data => this.setState({repos:data}))
-            
-
-            
-
     }
-
-
-        
-        
+ 
     render() {
         return (
             <div className="projects">

@@ -1,13 +1,32 @@
 import React from "react";
+import Typical from 'react-typical';
 import Nav from "../components/Nav.js";
+import Projects from "../components/Projects.js";
 
-import { Document, Page } from "react-pdf";
+
+import face from "../images/item.png";
 
 export default () =>  (
     
 <div>
     <Nav></Nav>
-    <div className="Wrapper">
+    <div className="wrapper">    
+        <div className="landingPage">
+            <div className="writing-div">
+                <Typical
+                steps={['H', 300, 'He', 300, 'Hey', 300, 'Hey,', 300, 'Hey, I' , 300, 'Hey, I\'m', 300, 'Hey, I\'m Ry', 300, 'Hey, I\'m Ryan', 300, 'Hey, I\'m Ryan.']}
+                loop={1}
+                wrapper="h1"
+                />
+            </div>
+            <div className="image-div">
+                <img src={face}/>
+            </div>
+        </div>
+        <div className="projects-section">
+            <h1>Projects: </h1>
+            <Projects/>
+        </div>
     </div>
 </div>
 );

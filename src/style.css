@@ -1,31 +1,7 @@
 Body {
   font-family: 'Courier New', Courier, monospace;
-  font-size: 23px;
-}
-
-/* Navigation */
-/* 740 */
-@media only screen and (max-width: 740px) {
-  .nav-mobile {
-    display: block !important;
-  }
-
-  .nav-desktop {
-    display: none !important;
-  }
-}
-
-.nav-mobile {
-  display: none;
-}
-
-#mobile-title {
-  border-bottom: 1.5px solid gray;
-}
-
-.nav-mobile ul {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  min-width: 320px;
+  overflow-x: hidden;
 }
 
 .navigation a {
@@ -34,12 +10,41 @@ Body {
 }
 
 .nav-desktop {
-  padding-left: 7%;
-  padding-right: 7%;
+  padding-left: 3%;
+  padding-right: 3%;
+  /* padding: 2% 5% 2% 5%; */
+
   background: black;
   color: white;
   display: grid;
-  grid-template-columns: 220px auto 200px;
+  grid-template-columns: 220px auto 150px;
+  grid-template-areas: "title . social";
+}
+
+.nav-title {
+  grid-area: title;
+  font-size: 1.3rem;
+}
+
+@media only screen and (max-width: 400px) {
+  .nav-social img {
+    width: 30px !important;
+    height: 30px !important;
+  
+  }
+
+  .nav-desktop {
+    grid-template-columns: 180px auto 120px;
+  }
+}
+
+.nav-social {
+  grid-area: social;
+
+}
+
+.nav-social li {
+  padding: 0px 0px 0px 10px !important;
 }
 
 .nav-desktop ul, .nav-social ul, .nav-social #nav-linkedin {
@@ -47,17 +52,6 @@ Body {
   display: inline-flex;
   padding-left: 0;
   margin-left: 0;
-}
-
-.nav-mobile .nav-links ul, .nav-mobile .nav-links li {
-  list-style: none;
-  padding-left: 0;
-  margin-left: 0;
-  padding-top: 10px;
-}
-
-.nav-desktop li {
-  padding-left: 30px;
 }
 
 .nav-title,.nav-social,.nav-links {
@@ -69,30 +63,13 @@ Body {
 .nav-social img {
   background: white;
   cursor: pointer;
-}
-
-.nav-links {
-  margin-left: auto;
-  margin-right: 5%;
-}
-
-.nav-mobile .nav-title, .nav-mobile .nav-social {
-  text-align: center;
-}
-
-
-.navImg {
   width: 40px;
   height: 40px;
 }
 
-.nav-links a:hover, .nav-title a:hover, .nav-mobile a:hover {
+.nav-title a:hover {
   transition-duration: .8s;
   color: gray;
-}
-
-.nav-links .gray {
-  color: gray !important;
 }
 
 .nav-social img:hover {
@@ -102,21 +79,63 @@ Body {
 
 /*====================================*/
 
+/* Landing */
 
-
-
-.Wrapper {
-  max-width: 80%;
-  margin: 0 auto;
-  zoom: 1.2;
+.wrapper {
+  display: grid;
+  grid-template-rows: auto  auto;
 }
 
-h1 {
-  height: 100%;
-  margin-top: 0px;
+.landingPage {
+  display: grid;
+  grid-template-columns: 400px auto;
+  margin: 5% 5% 0% 5%;
+  text-align: center;
 }
 
-div.projects{
+@media only screen and (max-width:690px ) {
+  .landingPage {
+    grid-template-columns:auto;
+
+    grid-template-rows: auto auto;
+  }
+}
+
+@media only screen and (min-width:1000px ) {
+  .wrapper {
+    font-size: 1.8rem !important;
+  }
+}
+
+.landingPage img {
+
+  -webkit-filter: drop-shadow(10px 12px 25px rgba(0, 0, 0, 0.7));
+  -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
+  filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
+
+  width: 50%;
+  position: relative;
+  top:8px;
+  min-width: 200px;
+  min-height: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-div {
+  height: 50%;
+}
+
+.projects-section {
+  z-index: 1;
+  background: #ecebeb;
+  padding: 2% 5% 2% 5%;
+
+}
+
+div .projects {
   display: grid;
   -webkit-box-align: center;
   align-items: center;
@@ -135,14 +154,8 @@ div.projects{
     gap: 1.2rem 1.2rem;
   }
 
-  #projects-title {
-    margin-top: 20% !important;
-  }
 }
 
-#projects-title {
-  margin-top: 5%;
-}
 
 .repo{
   width: 100%;
@@ -164,155 +177,4 @@ div.repoBox{
   background: rgb(230, 230, 230);
   box-shadow: rgba(0, 0, 0, 0.8) 0px 3px 6px 0px;
 }
-
-.Inner_Wrapper {
-  box-sizing: border-box;
-  min-width: 0;
-  width: 100%;
-  min-width: 0;
-  max-width: 1024px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0;
-  padding-bottom: 16px;
-  padding-top: 50px;
-}
-
-.Profile {
-  box-sizing: border-box;
-  min-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  width: 100%;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-
-/* @media only screen and (max-width: 600px) {
-  .Profile{
-    width: auto;
-    height: 50px;
-  }
-} */
-
-.Profilepic{
-  border-radius: 50%;
-}
-
-.linksdiv {
-  box-sizing: 
-  border-box;
-  min-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  width: 100%;
-  -webkit-box-pack: space-around;
-  -webkit-justify-content: space-around;
-  -ms-flex-pack: space-around;
-  justify-content: space-around;
-}
-
-a.links {
-  cursor: pointer;
-  color: black;
-}
-
-svg{
-  stroke: currentcolor;
-  fill: currentcolor;
-  stroke-width: 0;
-  height: 30;
-  width: 30;
-}
-
-
-.active {
-  background-color: #4CAF50;
-} 
-
-/* Resume */
-.Resume {
-  width: 100%;
-  margin-top: -25px;
-}
-
-
-/* Position and sizing of burger button */
-.bm-burger-button {
-  position: relative;
-  width: 36px;
-  height: 30px;
-  left: 36px;
-  top: 36px;
-}
-
-/* Color/shape of burger icon bars */
-.bm-burger-bars {
-  background: #373a47;
-}
-
-/* Color/shape of burger icon bars on hover*/
-.bm-burger-bars-hover {
-  background: #a90000;
-}
-
-/* Position and sizing of clickable cross button */
-.bm-cross-button {
-  height: 24px;
-  width: 24px;
-}
-
-/* Color/shape of close button cross */
-.bm-cross {
-  background: #bdc3c7;
-}
-
-/*
-Sidebar wrapper styles
-Note: Beware of modifying this element as it can break the animations - you should not need to touch it in most cases
-*/
-.bm-menu-wrap {
-  position: fixed;
-  height: 100%;
-}
-
-/* General sidebar styles */
-.bm-menu {
-  background: #000000;
-  padding: 0em 1.0em 0;
-  font-size: 1.15em;
-  overflow: hidden !important;
-}
-
-
-/* Morph shape necessary with bubble or elastic */
-.bm-morph-shape {
-  fill: #373a47;
-}
-
-/* Wrapper for item list */
-.bm-item-list {
-  color: #b8b7ad;
-  padding: 0.8em;
-}
-
-/* Individual item */
-.bm-item {
-  display: inline-block;
-}
-
-/* Styling of overlay */
-.bm-overlay {
-  background: rgba(0, 0, 0, 0.3);
-}
-
 
