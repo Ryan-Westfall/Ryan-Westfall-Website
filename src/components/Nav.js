@@ -1,7 +1,5 @@
 import React from 'react';
 import {Link} from 'gatsby';
-import { slide as Menu } from 'react-burger-menu'
-
 
 import Linkedin from "../images/LinkedinNav.png";
 import Github from "../images/GithubNav.png";

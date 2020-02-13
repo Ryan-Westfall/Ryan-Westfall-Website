@@ -30,7 +30,6 @@ Body {
   .nav-social img {
     width: 30px !important;
     height: 30px !important;
-  
   }
 
   .nav-desktop {
@@ -84,14 +83,20 @@ Body {
 .wrapper {
   display: grid;
   grid-template-rows: auto  auto;
+  font-size: 2.4vw !important;
+  
 }
 
 .landingPage {
   display: grid;
-  grid-template-columns: 400px auto;
+  grid-template-columns: 50% auto;
   margin: 5% 5% 0% 5%;
   text-align: center;
 }
+
+/* .writing-div {
+  width: 50%;
+} */
 
 @media only screen and (max-width:690px ) {
   .landingPage {
@@ -99,39 +104,35 @@ Body {
 
     grid-template-rows: auto auto;
   }
-}
 
-@media only screen and (min-width:1000px ) {
   .wrapper {
-    font-size: 1.8rem !important;
+    font-size: .9rem !important;
   }
 }
 
-.landingPage img {
+.image-div {
+  display: flex;
+  align-items:flex-end;
+}
 
+.smart-image{
   -webkit-filter: drop-shadow(10px 12px 25px rgba(0, 0, 0, 0.7));
   -ms-filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
   filter: "progid:DXImageTransform.Microsoft.Dropshadow(OffX=12, OffY=12, Color='#444')";
+  /* justify-content:left; */
 
-  width: 50%;
+  width: 100%;
+  height: 100%;
   position: relative;
-  top:8px;
   min-width: 200px;
   min-height: 100%;
-  padding-left: 20px;
-  padding-right: 20px;
-  justify-content: center;
-  align-items: center;
-}
-
-.image-div {
-  height: 50%;
 }
 
 .projects-section {
   z-index: 1;
   background: #ecebeb;
   padding: 2% 5% 2% 5%;
+  font-size: 1.8rem !important;
 
 }
 

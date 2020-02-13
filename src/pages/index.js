@@ -2,6 +2,10 @@ import React from "react";
 import Typical from 'react-typical';
 import Nav from "../components/Nav.js";
 import Projects from "../components/Projects.js";
+import { Helmet } from "react-helmet"
+import ReactImageAppear from 'react-image-appear';
+
+
 
 
 import face from "../images/item.png";
@@ -9,6 +13,11 @@ import face from "../images/item.png";
 export default () =>  (
     
 <div>
+    <Helmet>
+        <meta charSet="utf-8" />
+        <title>Ryan Portfolio</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+    </Helmet>
     <Nav></Nav>
     <div className="wrapper">    
         <div className="landingPage">
@@ -20,7 +29,15 @@ export default () =>  (
                 />
             </div>
             <div className="image-div">
-                <img src={face}/>
+                {/* <img src={face}/> */}
+                <ReactImageAppear 
+                src={face}
+                animation="fadeIn"
+                animationDuration="3s"
+                showLoader={false}
+                placeholderStyle={{backgroundColor: 'white' }}
+                className="smart-image"
+                />
             </div>
         </div>
         <div className="projects-section">
