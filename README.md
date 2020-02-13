@@ -1,9 +1,9 @@
-# Ryan-Westfall.github.io
-Portfolio website created from the Gatsby framework.
+# Ryan-Westfall.com
+Portfolio website created from the Gatsby framework that's based on React.
 
 # Features
-The landing page features my resume.
+Responsive design
 
+Each project's information is loaded by utilizing the github's API to pull public repository data from my profile. 
 
-The projects tab utilizes github's API to pull public repository data from my profile.
 Showcases incomplete demo for in-house text editor project.
