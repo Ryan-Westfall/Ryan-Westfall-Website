@@ -6,7 +6,6 @@ export default () =>  (
 <div style={{ color: `teal` }}>
     <Nav></Nav>
     <App></App>
-
 </div>
 );
 

@@ -3,10 +3,6 @@ import Typical from 'react-typical';
 import Nav from "../components/Nav.js";
 import Projects from "../components/Projects.js";
 import { Helmet } from "react-helmet"
-import ReactImageAppear from 'react-image-appear';
-
-
-
 
 import face from "../images/item.png";
 
@@ -29,15 +25,7 @@ export default () =>  (
                 />
             </div>
             <div className="image-div">
-                {/* <img src={face}/> */}
-                <ReactImageAppear 
-                src={face}
-                animation="fadeIn"
-                animationDuration="3s"
-                showLoader={false}
-                placeholderStyle={{backgroundColor: 'white' }}
-                className="smart-image"
-                />
+                <img className="smart-image" src={face}/>
             </div>
         </div>
         <div className="projects-section">

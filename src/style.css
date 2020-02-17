@@ -94,9 +94,10 @@ Body {
   text-align: center;
 }
 
-/* .writing-div {
-  width: 50%;
-} */
+.writing-div {
+  display: flex;
+  align-items: center;
+}
 
 @media only screen and (max-width:690px ) {
   .landingPage {
@@ -126,7 +127,15 @@ Body {
   position: relative;
   min-width: 200px;
   min-height: 100%;
+  animation: fadein 5s;
 }
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
 
 .projects-section {
   z-index: 1;
