@@ -3,7 +3,7 @@ import Nav from "../components/Nav.js";
 import App from "../../client/src/App.js";
 
 export default () =>  (
-<div style={{ color: `teal` }}>
+<div>
     <Nav></Nav>
     <App></App>
 </div>

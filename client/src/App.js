@@ -11,8 +11,6 @@ import EmptySeedJson from './seed-data/empty.json';
 
 import api from './api';
 
-import "./stylesheet.css"
-
 class App extends React.Component {
   constructor(props) {
     super(props);
@@ -217,9 +215,6 @@ saveAsData() {
             <button className="save" id="saveButton" onClick={ () => this.saveData() }>Save</button>
               <button id="navButton" onClick={ () => this.saveAsData() }>Save As</button>
           </div>
-        </div>
-        <div style={{right:"415px", top:"58px", width:"auto", height:"auto", position:"absolute"}}>
-          <span style={{color:"rgb(0,0,0)", fontSize:"25px", opacity:".5"}}>Select a view:</span>
         </div>
           <div style={{position:"absolute", right:"0"}}>
             <ul className="nav">

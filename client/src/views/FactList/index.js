@@ -394,28 +394,6 @@ class FactList extends React.Component {
     return bolded;
   }
 
-  // importPictures = (data) => {
-    
-  //   let bolded = this.getTerms(data);
-
-  //   let line;
-  //   let document = [];
-
-  //       line = bolded.map(term => (
-  //         <li><button>{term}</button> <Upload></Upload></li>
-  //       ))
-
-      
-  //       if(line)
-  //       this.setState({
-  //         elementList: line
-  //       })
-      
-
-  // }
-
-  
-
   render() {    
 
     return (
@@ -432,11 +410,11 @@ class FactList extends React.Component {
             />
           </div>
           <div style={{gridRow:"1/2", gridColumn:"2/2", marginTop:"2%"}}><span style={{fontSize:"30px"}}>Add Pictures</span></div>
-          <div className="grid-item" id="termPictures">
+          {/* <div className="grid-item" id="termPictures">
             <ul>
               <SymbolPanel data={this.props.data}/>
             </ul>
-          </div>
+          </div> */}
           <div style={{gridRow:"3/3", gridColumn:"1/2", marginLeft:"2.5%", marginTop:"1%"}}>
             <span style={{fontSize:"30px"}}>Citations</span>
           </div>

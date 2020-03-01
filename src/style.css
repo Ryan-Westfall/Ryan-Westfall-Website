@@ -2,6 +2,7 @@ Body {
   font-family: 'Courier New', Courier, monospace;
   min-width: 320px;
   overflow-x: hidden;
+  margin: 0;
 }
 
 .navigation a {
