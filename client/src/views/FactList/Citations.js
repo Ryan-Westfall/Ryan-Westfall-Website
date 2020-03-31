@@ -94,7 +94,7 @@ class Citations extends React.Component {
 
   render() {
     return (
-      <div style={{marginLeft:"1%"}}>
+      <div>
       <Editor
         editorState={this.state.citationState}
         onChange={this.citationChange}

@@ -182,7 +182,7 @@ class SymbolCreator extends React.Component {
   render() {
     return (
       <div>
-        <div className="editor" style={{width: "70%", margin: "auto", borderWidth: 1, borderStyle: "solid"}}>
+        <div className="editor">
           <Editor
             editorState={this.state.editorState}
             onChange={this.onChange}

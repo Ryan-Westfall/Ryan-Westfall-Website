@@ -8,6 +8,8 @@ import SymbolCreator from './views/SymbolCreator.js';
 import StoryWeaver from './views/StoryWeaver.js';
 
 import EmptySeedJson from './seed-data/empty.json';
+import Demo from './seed-data/Demo.json';
+
 
 import api from './api';
 
@@ -16,17 +18,10 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      editor: <h4
-        style={{
-          width: '70%',
-          margin: 'auto',
-          borderWidth: 1,
-          borderStyle: 'solid',
-        }}
-      >Load data or select view to start empty</h4>,
-      jsonData: EmptySeedJson,
-      view: null,
+      jsonData: Demo,
+      view: null
     };
+
   }
 
   getNames() {
@@ -146,6 +141,11 @@ class App extends React.Component {
 
 //Navigation Bar Logic
 componentDidMount() {
+
+  this.medicalButton();
+  document.getElementById('Medical').setAttribute("class", "viewHighlighted");
+
+
  
 
   document.getElementById("Medical").onclick = () => {
@@ -191,9 +191,7 @@ componentDidMount() {
 saveAsData() {
   document.getElementById('app').setAttribute('class','grayout');
   document.getElementById('saveAsPopup').setAttribute('style', "display:block");
-}
-  
-  
+} 
 
   render() {
     if(this.state.jsonData.fileName !== "") {
@@ -206,21 +204,21 @@ saveAsData() {
 
       <SaveasPopup potentialFileName={this.state.potentialFileName} saveData={(potentialFileName) => this.saveData(potentialFileName)}/>
 
-      <div id="app" style={{height:"100%"}}>
-        <div className="navBar" style={{display: "flex"}}>
-         <div className="dropdown">
+      <div id="app">
+        <div className="navBar">
+         {/* <div className="dropdown">
           <button onClick={() => this.dropDownSelected()} className="dropbtn">File</button>
-          <div id="myDropdown" className="dropdown-content">
-            <button id="navButton" onClick={ () => this.openFile() }>Open</button>
-            <button className="save" id="saveButton" onClick={ () => this.saveData() }>Save</button>
-              <button id="navButton" onClick={ () => this.saveAsData() }>Save As</button>
-          </div>
-        </div>
-          <div style={{position:"absolute", right:"0"}}>
+            <div id="myDropdown" className="dropdown-content">
+              <button id="navButton" onClick={ () => this.openFile() }>Open</button>
+              <button className="save" id="saveButton" onClick={ () => this.saveData() }>Save</button>
+                <button id="navButton" onClick={ () => this.saveAsData() }>Save As</button>
+            </div>
+          </div> */}
+          <div className="nav-buttons">
             <ul className="nav">
-              <li className="nav"><button className="viewButton" id="Medical" onClick={() => this.medicalButton()}>Fact List</button></li>
-              <li className="nav"><button className="viewButton" id="Symbol" onClick={() => this.symbolButton()}>Symbol Creator</button></li>
-              <li className="nav"><button className="viewButton" id="Story" onClick={() => this.storyButton()}>Story Weaver</button></li>
+              <button className="viewButton" id="Medical" onClick={() => this.medicalButton()}>Fact List</button>
+              <button className="viewButton" id="Symbol" onClick={() => this.symbolButton()}>Symbol Creator</button>
+              <button className="viewButton" id="Story" onClick={() => this.storyButton()}>Story Weaver</button>
             </ul>
           </div>
         </div>
@@ -228,14 +226,6 @@ saveAsData() {
           { this.state.editor }
         </div>
 
-        <div
-          style={{
-            display: 'none',
-          }}
-          id='currentData'
-        >
-          { JSON.stringify(this.state.jsonData) }
-        </div>
         <div style={{position:"fixed", bottom:"0", left:"0"}}>
           <h1 style={{
               marginBottom:"0px",

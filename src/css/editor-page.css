@@ -1,0 +1,121 @@
+.editor {
+    /* min-width: 1200px; */
+}
+
+.l-editorwrapper {
+    font-size: 2.4vw !important;
+}
+
+.editor-description {
+    
+    display: grid;
+    grid-template-areas: "video" "factlist" "symbolcreator" "storyweaver";
+    column-gap: 20px;
+    row-gap: 15px;
+    background: white;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 50px;
+}
+
+.editor-description > div {
+    border: 1px solid black;
+    background: rgb(230, 230, 230);
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 3px 6px 0px;
+    padding-left: 20px;
+}
+
+
+
+.editor-description h4, .description h4 {
+    margin-top: 30px;
+    border-style: solid;
+    border-width: 0 0 1px 0;
+    border-color: rgb(80, 79, 79);
+    margin-bottom: auto;
+}
+
+.editor-description p, .description{
+    font-size: 2vw;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem;
+}
+
+.description-video {
+    display: flex;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    align-items: center;
+    margin-left: 2rem;
+    margin-right: 2rem;
+
+    border: 1px solid black;
+    background: rgb(230, 230, 230);
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 3px 6px 0px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+@media only screen and (max-width:1200px ) {
+    .description-video {
+        display: block;
+    }
+}
+
+
+
+
+
+.video2 {
+    grid-area: video;
+    background: rgb(230, 230, 230);
+    display: flex;
+    padding-top: 15px;
+}
+
+.factlist {
+    grid-area: factlist;
+}
+
+.symbolcreator {
+    grid-area: symbolcreator;
+}
+
+.storyweaver {
+    grid-area: storyweaver;
+}
+
+.video2 , .video1 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.editorapp-wrapper {
+    font-size: 1.8vw;
+    margin-left: 3%;
+    margin-right: 3%;
+    border-style: solid;
+    border-color: black;
+}
+
+.linebreak {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+    border-top: 1px dotted black;
+}
+
+.linebreak > h4 {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.whitespace {
+    height: 100px;
+}
+  

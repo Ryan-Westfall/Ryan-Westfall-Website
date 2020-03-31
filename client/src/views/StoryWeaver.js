@@ -75,8 +75,7 @@ class StoryWeaver extends React.Component {
   render() {
     return (
       <div>
-        <h4>Draft js editor</h4>
-        <div className="editor-container" style={{width: "70%", margin: "auto", borderWidth: 1, borderStyle: "solid"}}>
+        <div className="editor-container">
           <Editor
             editorState={this.state.editorState}
             onChange={this.onChange}

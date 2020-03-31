@@ -397,9 +397,9 @@ class FactList extends React.Component {
   render() {    
 
     return (
-      <div className="grid-container">
-          <div style={{gridRow:"1/2", gridColumn:"1/2", marginLeft:"2.5%", marginTop:"1%"}}><span style={{fontSize:"30px"}}>Fact List</span></div>
-          <div className="grid-item" id="editor-container">
+      <div>
+          <div><span>Fact List</span></div>
+          <div>
             <Editor
               customStyleMap={styleMap}
               editorState={this.state.editorState}
@@ -409,16 +409,10 @@ class FactList extends React.Component {
               handlePastedFiles={this.pastedFiles}
             />
           </div>
-          <div style={{gridRow:"1/2", gridColumn:"2/2", marginTop:"2%"}}><span style={{fontSize:"30px"}}>Add Pictures</span></div>
-          {/* <div className="grid-item" id="termPictures">
-            <ul>
-              <SymbolPanel data={this.props.data}/>
-            </ul>
-          </div> */}
-          <div style={{gridRow:"3/3", gridColumn:"1/2", marginLeft:"2.5%", marginTop:"1%"}}>
-            <span style={{fontSize:"30px"}}>Citations</span>
+          <div>
+            <span>Citations</span>
           </div>
-          <div className="grid-item"  id="citaition-container">
+          <div className="citation-div">
           <Citations data={this.props.data} updatedata={data=> {this.props.updatedata(data)}} ref={Ref => this.child=Ref}/>
           </div>
       </div>
