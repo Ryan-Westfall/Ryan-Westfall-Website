@@ -21,7 +21,7 @@ class Projects extends React.Component {
               <Link to="/editor" className="repo">
               <div className="repoBox">
                           <div>
-                            <h4>Text Editor Application (Incomplete)</h4>
+                            <h4>Text Editor Application (Demo)</h4>
                           </div>
                           <div style={{padding:"1rem 0px", opacity:"0.4"}}>
                             Has specific use case to create memory palaces
