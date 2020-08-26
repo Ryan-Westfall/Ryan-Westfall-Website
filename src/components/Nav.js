@@ -4,7 +4,7 @@ import {Link} from 'gatsby';
 import Linkedin from "../images/LinkedinNav.png";
 import Github from "../images/GithubNav.png";
 import Resume from "../images/resume-logo.png";
-import test from "../images/ryan-resume-01-08-20.pdf"
+import test from "../images/ryan-resume.pdf"
 
 
 
