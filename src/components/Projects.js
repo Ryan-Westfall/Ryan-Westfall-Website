@@ -24,7 +24,7 @@ class Projects extends React.Component {
                             <h4>Text Editor Application (Demo)</h4>
                           </div>
                           <div style={{padding:"1rem 0px", opacity:"0.4"}}>
-                            Has specific use case to create memory palaces
+                            WYSIWYG text editor that selectively parses styled text categorizing them into "views"
                           </div>
                       </div>
               </Link>
