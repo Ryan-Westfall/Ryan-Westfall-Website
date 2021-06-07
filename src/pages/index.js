@@ -3,16 +3,39 @@ import Typical from 'react-typical';
 import Nav from "../components/Nav.js";
 import Projects from "../components/Projects.js";
 import { Helmet } from "react-helmet"
+import Img from "gatsby-image"
+import { graphql, useStaticQuery } from "gatsby"
+
+
 
 import face from "../images/item.png";
 
-export default () =>  (
-    
+export default  () =>  {
+
+    const data = useStaticQuery(graphql `
+    query Images {
+    image: file(relativePath: {eq: "item.png"}) {
+        id
+        childImageSharp {
+          fixed {
+            ...GatsbyImageSharpFixed
+          }
+          fluid {
+            ...GatsbyImageSharpFluid
+          }
+        }
+        
+      }
+    }
+    `);
+
+    console.log(data)
+
+    return (
 <div>
     <Helmet>
         <meta charSet="utf-8" />
         <title>Ryan Portfolio</title>
-        <link rel="canonical" href="http://mysite.com/example" />
     </Helmet>
     <Nav></Nav>
     <div className="wrapper">    
@@ -25,7 +48,7 @@ export default () =>  (
                 />
             </div>
             <div className="image-div">
-                <img className="smart-image" src={face}/>
+                <Img className="smart-image" fluid={data.image.childImageSharp.fluid}/>
             </div>
         </div>
         <div className="projects-section">
@@ -34,6 +57,6 @@ export default () =>  (
         </div>
     </div>
 </div>
-);
-
+    );
+    };
 

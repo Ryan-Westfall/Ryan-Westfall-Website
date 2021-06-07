@@ -15,13 +15,13 @@ class Nav extends React.Component {
             aboutColor: "none"
             
         }
-        if(this.props.tab == "projects") {
+        if(this.props.tab === "projects") {
             this.state = {
                 projectColor: "gray"
             }
         }
 
-        else if(this.props.tab == "about") {
+        else if(this.props.tab === "about") {
             this.state = {
                 aboutColor: "gray"
             }
