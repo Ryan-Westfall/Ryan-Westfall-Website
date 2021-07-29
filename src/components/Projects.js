@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'gatsby';
+import study from "../images/study.pdf"
+
 class Projects extends React.Component {
     constructor(props) {
         super(props);
@@ -28,6 +30,16 @@ class Projects extends React.Component {
                           </div>
                       </div>
               </Link>
+              <a className="repo load" href={study}> 
+                <div className="repoBox">
+                  <div>
+                    <h4>ANN-based Sentiment Analysis Approaches Study (Download)</h4>
+                  </div>
+                  <div style={{padding:"1rem 0px", opacity:"0.4"}}>
+                    Self-researched study comparing performance of simple RNN, LSTM, and CNN sentiment analysis appraoches
+                  </div>
+                </div>
+              </a>
                 {this.state.repos.map(function(repo) {
                   if(repo.name === "Ryan-Westfall.github.io") {
                     return;
