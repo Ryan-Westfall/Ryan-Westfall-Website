@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "codeforces-stats-card": "github:Ryan-Westfall/codeforces-stats-card",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^2.0.4"
