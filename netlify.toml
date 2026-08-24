@@ -15,6 +15,11 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
 
 [[headers]]
+  for = "/api/leetcode*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, stale-while-revalidate=300"
+
+[[headers]]
   for = "*.pdf"
   [headers.values]
     Content-Disposition = "attachment"
@@ -23,6 +28,18 @@
   from = "/editor"
   to = "https://github.com/Ryan-Westfall/pixorize-editor"
   status = 301
+  force = true
+
+[[redirects]]
+  from = "/api/leetcode"
+  to = "/.netlify/functions/leetcode"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/leetcode/*"
+  to = "/.netlify/functions/leetcode?username=:splat"
+  status = 200
   force = true
 
 [[redirects]]

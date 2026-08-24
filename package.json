@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "codeforces-stats-card": "^1.8.2",
+    "leetcode-stats-card": "file:../leetcode-stats-card",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet-async": "^2.0.4"
