@@ -145,7 +145,62 @@ function normalize(data, username) {
   };
 }
 
+const ALLOWED_ORIGINS = [
+  'https://ryan-westfall.info',
+  'https://www.ryan-westfall.info',
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+];
+
+function isAllowedOrigin(event) {
+  const origin = event.headers?.origin || event.headers?.Origin || '';
+  const referer = event.headers?.referer || event.headers?.Referer || '';
+  // Allow same-origin requests (no Origin header, e.g., curl, server-side)
+  if (!origin && !referer) return true;
+  // Check origin
+  if (origin && ALLOWED_ORIGINS.some((o) => origin.startsWith(o))) return true;
+  // Check referer
+  if (referer && ALLOWED_ORIGINS.some((o) => referer.startsWith(o))) return true;
+  // Allow Netlify deploy previews and branch deploys
+  const check = origin || referer;
+  if (check && check.includes('ryan-westfall-website') && check.includes('netlify.app')) return true;
+  if (check && check.includes('ryan-westfall.info')) return true;
+  // In local dev, allow any localhost
+  if (check && (check.includes('localhost') || check.includes('127.0.0.1'))) return true;
+  return false;
+}
+
+function getCorsHeaders(event) {
+  const origin = event.headers?.origin || event.headers?.Origin || '';
+  const allowed = ALLOWED_ORIGINS.find((o) => origin.startsWith(o));
+  return {
+    'Access-Control-Allow-Origin': allowed || ALLOWED_ORIGINS[0],
+    'Access-Control-Allow-Methods': 'GET, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Vary': 'Origin',
+  };
+}
+
 export async function handler(event, context) {
+  // Handle OPTIONS preflight
+  if (event.httpMethod === 'OPTIONS') {
+    return {
+      statusCode: 200,
+      headers: getCorsHeaders(event),
+      body: '',
+    };
+  }
+
+  if (!isAllowedOrigin(event)) {
+    return {
+      statusCode: 403,
+      headers: { 'Content-Type': 'application/json', ...getCorsHeaders(event) },
+      body: JSON.stringify({ error: 'Forbidden: This proxy is private. Deploy your own – see https://github.com/Ryan-Westfall/leetcode-stats-card/tree/main/examples' }),
+    };
+  }
+
   const username = event.queryStringParameters?.username || event.queryStringParameters?.user || event.path?.split('/').pop();
   // Also support path like /api/leetcode/Ryan-Westfall
   let user = username;
@@ -161,7 +216,7 @@ export async function handler(event, context) {
   if (!user || user === 'leetcode') {
     return {
       statusCode: 400,
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+      headers: { 'Content-Type': 'application/json', ...getCorsHeaders(event) },
       body: JSON.stringify({ error: 'Missing username parameter. Use ?username=YourLeetCodeUsername' }),
     };
   }
@@ -173,7 +228,7 @@ export async function handler(event, context) {
       statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        ...getCorsHeaders(event),
         'Cache-Control': 'public, max-age=300, stale-while-revalidate=300',
         'X-Cache': 'HIT',
       },
@@ -190,7 +245,7 @@ export async function handler(event, context) {
       statusCode: 200,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        ...getCorsHeaders(event),
         'Cache-Control': 'public, max-age=300, stale-while-revalidate=300',
         'X-Cache': 'MISS',
       },
@@ -205,7 +260,7 @@ export async function handler(event, context) {
         statusCode: 200,
         headers: {
           'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*',
+          ...getCorsHeaders(event),
           'Cache-Control': 'public, max-age=60',
           'X-Cache': 'STALE',
         },
@@ -216,7 +271,7 @@ export async function handler(event, context) {
       statusCode: is429 ? 429 : 500,
       headers: {
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
+        ...getCorsHeaders(event),
         'Retry-After': is429 ? '60' : '10',
       },
       body: JSON.stringify({ error: err.message }),

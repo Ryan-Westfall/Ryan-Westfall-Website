@@ -10,7 +10,8 @@ export default function CompetitiveProgramming() {
     <div className="cp-panel">
       <h2>Competitive Programming</h2>
       <div className="cp-cards">
-        <LeetcodeCard username={LEETCODE_USERNAME} />
+        {/* Use our own Netlify proxy (not the public default) – /api/leetcode */}
+        <LeetcodeCard username={LEETCODE_USERNAME} apiBase="/api/leetcode" />
         <CodeforcesCard handle={CODEFORCES_HANDLE} />
       </div>
     </div>
