@@ -152,6 +152,200 @@ body {
   transform: translateX(4px);
 }
 
+/* CP Archive */
+.cp-archive {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid #e9ecef;
+}
+
+.cp-archive-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.cp-archive-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.cp-archive-stats {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.cp-archive-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: center;
+}
+
+.cp-archive-search {
+  flex: 1;
+  min-width: 200px;
+  padding: 0.6rem 1rem;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.cp-archive-filters {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cp-archive-filters button {
+  padding: 0.4rem 0.9rem;
+  border: 1px solid #dee2e6;
+  background: #f8f9fa;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.85rem;
+  transition: all 0.2s;
+}
+
+.cp-archive-filters button.active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.cp-archive-sort {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #dee2e6;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 0.85rem;
+}
+
+.cp-archive-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-height: 600px;
+  overflow-y: auto;
+  border: 1px solid #f1f3f5;
+  border-radius: 8px;
+  padding: 0.5rem;
+}
+
+.cp-archive-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.15s;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cp-archive-item:hover {
+  background: #f8f9fa;
+}
+
+.cp-archive-item-main {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex-wrap: wrap;
+  flex: 1;
+  min-width: 200px;
+}
+
+.cp-archive-platform {
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
+
+.cp-archive-platform--leetcode {
+  background: #ffa116;
+  color: #000;
+}
+
+.cp-archive-platform--codeforces {
+  background: #1f8acb;
+  color: #fff;
+}
+
+.cp-archive-title {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.cp-archive-id {
+  font-size: 0.8rem;
+  color: #868e96;
+  font-family: monospace;
+}
+
+.cp-archive-item-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.cp-archive-rating {
+  background: #e9ecef;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.cp-archive-tag {
+  background: #f1f3f5;
+  padding: 0.1rem 0.4rem;
+  border-radius: 10px;
+  font-size: 0.75rem;
+}
+
+.cp-archive-date, .cp-archive-lang {
+  opacity: 0.7;
+}
+
+.cp-archive-footer {
+  margin-top: 1rem;
+  text-align: center;
+  color: #868e96;
+  font-size: 0.85rem;
+}
+
+.cp-archive-loading, .cp-archive-error, .cp-archive-empty {
+  padding: 2rem;
+  text-align: center;
+  color: #666;
+}
+
+.cp-archive-error a {
+  color: #1f8acb;
+}
+
 
 /* Projects Section */
 .projects-section {
