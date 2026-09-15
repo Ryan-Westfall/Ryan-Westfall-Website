@@ -112,11 +112,6 @@ export default function ProblemDetail({ problem, onClose }) {
   }, [editedNotes]);
 
   useEffect(() => {
-    // Check if extension flag exists immediately
-    if (window.__leetSyncExtension) {
-      setExtensionAvailable(true);
-    }
-
     // Listen for extension announcement and save responses
     const handler = (event) => {
       if (event.data && event.data.type === 'LEETSYNC_EXTENSION_AVAILABLE') {
@@ -140,21 +135,8 @@ export default function ProblemDetail({ problem, onClose }) {
     // Ping extension to announce
     window.postMessage({ type: 'LEETSYNC_PING' }, '*');
 
-    // Also check flag again after a short delay in case extension loads after component
-    const interval = setInterval(() => {
-      if (window.__leetSyncExtension) {
-        setExtensionAvailable(true);
-      }
-    }, 500);
-
-    const timeout = setTimeout(() => {
-      clearInterval(interval);
-    }, 3000);
-
     return () => {
       window.removeEventListener('message', handler);
-      clearInterval(interval);
-      clearTimeout(timeout);
     };
   }, []);
 
