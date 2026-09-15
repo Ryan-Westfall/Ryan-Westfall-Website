@@ -379,61 +379,6 @@ export default function ProblemDetail({ problem, onClose }) {
     };
 
     window.postMessage(message, '*');
-
-    // Start polling after a short delay to allow GitHub to update
-    // Note: We poll with cache-busting to check if extension successfully saved
-    let pollAttempts = 0;
-    const maxPollAttempts = 5; // Reduced from 10 to avoid excessive polling
-    const pollInterval = 2000; // 2 seconds
-    
-    const pollGitHub = async () => {
-      pollAttempts++;
-      try {
-        const url = `${GITHUB_RAW_BASE}/${problem.dir}/notes.md`;
-        const res = await fetch(`${url}?t=${Date.now()}`);
-        if (res.ok) {
-          const text = await res.text();
-          const parsed = parseNotesMd(text);
-          // Check if GitHub version matches our saved version
-          if (parsed === editedNotes || text.includes(editedNotes.slice(0, 50))) {
-            // GitHub has updated, success
-            setSaving(false);
-            setIsEditing(false);
-            setNotes(editedNotes);
-            return; // stop polling
-          }
-        } else if (res.status === 404) {
-          // File doesn't exist yet - extension may still be processing
-          // or this is the first time saving notes for this problem
-          console.log('[Poll] Notes file not found yet (404), extension may still be saving');
-        }
-      } catch (e) {
-        console.warn('Polling GitHub notes failed', e);
-      }
-      
-      if (pollAttempts < maxPollAttempts) {
-        setTimeout(pollGitHub, pollInterval);
-      } else {
-        // Max attempts reached, but local save already done
-        // Consider it success for local persistence, GitHub may have delay
-        setSaving(false);
-        setIsEditing(false);
-        setNotes(editedNotes);
-      }
-    };
-
-    setTimeout(pollGitHub, 3000);
-
-    // Timeout fallback - even if extension doesn't respond, we already saved locally
-    setTimeout(() => {
-      setSaving(prev => {
-        if (prev) {
-          // Extension didn't respond, but local save already done
-          setSaving(false);
-        }
-        return false;
-      });
-    }, 15000); // reduced timeout
   };
 
   // Simple markdown rendering for notes view mode
