@@ -343,7 +343,6 @@ export default function ProblemDetail({ problem, onClose }) {
     setEditedNotes(notes);
     setIsEditing(true);
     setSaveError(null);
-    setSaveSuccess(false);
   };
 
   const handleCancel = () => {
@@ -381,16 +380,16 @@ export default function ProblemDetail({ problem, onClose }) {
 
     window.postMessage(message, '*');
 
-    // Poll GitHub to verify save succeeded
+    // Start polling after a short delay to allow GitHub to update
+    // Note: We poll with cache-busting to check if extension successfully saved
     let pollAttempts = 0;
-    const maxPollAttempts = 10;
+    const maxPollAttempts = 5; // Reduced from 10 to avoid excessive polling
     const pollInterval = 2000; // 2 seconds
     
     const pollGitHub = async () => {
       pollAttempts++;
       try {
         const url = `${GITHUB_RAW_BASE}/${problem.dir}/notes.md`;
-        // Add cache-busting param
         const res = await fetch(`${url}?t=${Date.now()}`);
         if (res.ok) {
           const text = await res.text();
@@ -401,8 +400,12 @@ export default function ProblemDetail({ problem, onClose }) {
             setSaving(false);
             setIsEditing(false);
             setNotes(editedNotes);
-            return true; // stop polling
+            return; // stop polling
           }
+        } else if (res.status === 404) {
+          // File doesn't exist yet - extension may still be processing
+          // or this is the first time saving notes for this problem
+          console.log('[Poll] Notes file not found yet (404), extension may still be saving');
         }
       } catch (e) {
         console.warn('Polling GitHub notes failed', e);
@@ -417,10 +420,8 @@ export default function ProblemDetail({ problem, onClose }) {
         setIsEditing(false);
         setNotes(editedNotes);
       }
-      return false;
     };
 
-    // Start polling after a short delay to allow GitHub to update
     setTimeout(pollGitHub, 3000);
 
     // Timeout fallback - even if extension doesn't respond, we already saved locally
@@ -432,7 +433,7 @@ export default function ProblemDetail({ problem, onClose }) {
         }
         return false;
       });
-    }, 30000); // longer timeout for polling
+    }, 15000); // reduced timeout
   };
 
   // Simple markdown rendering for notes view mode

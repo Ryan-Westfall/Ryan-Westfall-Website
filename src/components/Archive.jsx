@@ -205,7 +205,12 @@ export default function Archive() {
         <h1>Competitive Programming Archive</h1>
         <p className="archive-subtitle">
           Querying <a href="https://github.com/Ryan-Westfall/competitive-programming" target="_blank" rel="noopener noreferrer">Ryan-Westfall/competitive-programming</a>
-          {' '}— {problems.length} problems solved
+          {' '}— {typeof stats?.total === 'number' ? stats.total : (typeof stats?.uniqueSolved === 'number' ? stats.uniqueSolved : problems.length)} problems solved
+          {stats?.lastUpdated && (
+            <span className="last-updated">
+              {' '}(updated {new Date(stats.lastUpdated).toLocaleDateString()})
+            </span>
+          )}
         </p>
       </div>
 
