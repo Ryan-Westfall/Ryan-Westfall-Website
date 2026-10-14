@@ -3,29 +3,33 @@ import React, { useState, useEffect } from 'react';
 export default function Projects() {
   const [repos, setRepos] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    const headers = {};
-    if (import.meta.env.VITE_GITHUB_TOKEN) {
-      headers['Authorization'] = `Bearer ${import.meta.env.VITE_GITHUB_TOKEN}`;
-    }
-
-    fetch('https://api.github.com/users/Ryan-Westfall/repos?sort=updated&per_page=12', { headers })
-      .then(response => {
+    // Same-origin proxy (Netlify function in prod, Vite plugin in dev), not
+    // api.github.com directly: browser calls are unauthenticated (60/hr per
+    // IP) and 403 on shared IPs, which used to fail silently below.
+    fetch('/api/github-repos')
+      .then(async response => {
+        const data = await response.json().catch(() => null);
         if (!response.ok) {
-          throw new Error(`GitHub API error: ${response.status}`);
+          throw new Error(data?.error || `GitHub API error: ${response.status}`);
         }
-        return response.json();
+        if (!Array.isArray(data)) {
+          throw new Error('GitHub API returned an unexpected response');
+        }
+        return data;
       })
       .then(data => {
-        setRepos(Array.isArray(data) ? data : []);
-        setLoading(false);
+        setRepos(data);
+        setError(null);
       })
       .catch(err => {
         console.error('Failed to load GitHub repos:', err);
         setRepos([]);
-        setLoading(false);
-      });
+        setError(err.message);
+      })
+      .finally(() => setLoading(false));
   }, []);
 
   if (loading) {
@@ -73,6 +77,26 @@ export default function Projects() {
           </div>
         </div>
       </a>
+
+      {(error || repos.length === 0) && (
+        <a
+          href="https://github.com/Ryan-Westfall?tab=repositories"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="repo load"
+        >
+          <div className="repoBox">
+            <div>
+              <h4>More projects on GitHub</h4>
+            </div>
+            <div style={{padding:"1rem 0px", opacity:"0.4"}}>
+              {error
+                ? "Couldn't load projects from GitHub right now — view them on GitHub instead."
+                : "View all projects on GitHub."}
+            </div>
+          </div>
+        </a>
+      )}
 
       {repos
         .filter(repo => repo.name !== "Ryan-Westfall.github.io")

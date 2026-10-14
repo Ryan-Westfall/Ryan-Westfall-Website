@@ -20,6 +20,11 @@
     Cache-Control = "public, max-age=300, stale-while-revalidate=300"
 
 [[headers]]
+  for = "/api/github-repos*"
+  [headers.values]
+    Cache-Control = "public, max-age=300, stale-while-revalidate=300"
+
+[[headers]]
   for = "*.pdf"
   [headers.values]
     Content-Disposition = "attachment"
@@ -39,6 +44,12 @@
 [[redirects]]
   from = "/api/leetcode/*"
   to = "/.netlify/functions/leetcode?username=:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/api/github-repos"
+  to = "/.netlify/functions/github-repos"
   status = 200
   force = true
 

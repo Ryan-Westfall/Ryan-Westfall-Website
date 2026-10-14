@@ -9,6 +9,11 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Env files (may hold server-side tokens like GITHUB_TOKEN)
+.env
+.env.*
+!.env.example
+
 # Dependencies
 node_modules
 dist

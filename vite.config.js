@@ -1,5 +1,14 @@
-import { defineConfig } from 'vite'
+import { defineConfig, loadEnv } from 'vite'
 import react from '@vitejs/plugin-react'
+import { handler as githubReposHandler } from './netlify/functions/github-repos.js'
+
+// Local dev token for the GitHub proxy: GITHUB_TOKEN from the shell or a
+// .env/.env.local file (server-only; without the VITE_ prefix it is never
+// exposed to client code). Unset = unauthenticated GitHub API (60 req/hr).
+if (!process.env.GITHUB_TOKEN) {
+  const env = loadEnv('development', process.cwd(), '');
+  if (env.GITHUB_TOKEN) process.env.GITHUB_TOKEN = env.GITHUB_TOKEN;
+}
 
 // In-memory cache for local dev proxy (5 min, same as Netlify function & leetcard)
 const memoryCache = new Map();
@@ -212,8 +221,35 @@ function leetcodeProxyPlugin() {
   };
 }
 
+// Runs the exact Netlify function in dev, so /api/github-repos behaves the
+// same locally as in production instead of the browser calling GitHub itself.
+function githubReposProxyPlugin() {
+  return {
+    name: 'github-repos-proxy',
+    configureServer(server) {
+      server.middlewares.use('/api/github-repos', async (req, res, next) => {
+        try {
+          const result = await githubReposHandler({
+            httpMethod: req.method,
+            headers: req.headers,
+            queryStringParameters: {},
+            path: '/api/github-repos',
+          });
+          res.statusCode = result.statusCode;
+          for (const [name, value] of Object.entries(result.headers || {})) {
+            res.setHeader(name, value);
+          }
+          res.end(result.body);
+        } catch (err) {
+          next(err);
+        }
+      });
+    },
+  };
+}
+
 export default defineConfig({
-  plugins: [react(), leetcodeProxyPlugin()],
+  plugins: [react(), leetcodeProxyPlugin(), githubReposProxyPlugin()],
   build: {
     outDir: 'dist'
   }
